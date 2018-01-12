@@ -34,3 +34,6 @@
      warn: no
   when:
       - rhel7stig_skip_for_travis == false
+
+- name: rebuild initramfs
+  command: dracut -f
