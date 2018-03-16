@@ -135,6 +135,16 @@
       - audit
       - RHEL-07-020330
 
+- name: "PRELIM | RHEL-07-021350 | Check if /boot or /boot/efi reside on separate partitions"
+  shell: df --output=target /boot/efi | tail -n 1
+  changed_when: no
+  check_mode: no
+  register: rhel_07_boot_part
+  when:
+      - rhel_07_021350
+  tags:
+      - RHEL-07-021350
+
 # - name: "PRELIM | RHEL-07-040180 | The operating system must implement cryptography to protect the integrity of Lightweight Directory Access Protocol (LDAP) authentication communications."
 #   command: grep -i useldapauth /etc/sysconfig/authconfig
 #   register: rhel_07_040180_audit

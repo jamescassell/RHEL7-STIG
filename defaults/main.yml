@@ -444,3 +444,5 @@ rhel7stig_auth_settings:
 # i.e. if users authenticate with a means other than passwords (pubkey)
 # and will not know or use passwords then this should be 'no'
 rhel7stig_using_password_auth: yes
+
+rhel7stig_boot_part: "{{ rhel_07_boot_part.stdout }}"
