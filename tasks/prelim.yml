@@ -160,6 +160,19 @@
   tags:
       - RHEL-07-021350
 
+- name: "PRELIM | RHEL-07-010480 RHEL-07-010490 RHEL-07-021350 | Install grub2-tools."
+  yum:
+      name: grub2-tools
+  when:
+      - rhel_07_010480 or
+        rhel_07_010490 or
+        rhel_07_021350
+  tags:
+      - RHEL-07-010480
+      - RHEL-07-010490
+      - RHEL-07-021350
+
+
 # - name: "PRELIM | RHEL-07-040180 | The operating system must implement cryptography to protect the integrity of Lightweight Directory Access Protocol (LDAP) authentication communications."
 #   command: grep -i useldapauth /etc/sysconfig/authconfig
 #   register: rhel_07_040180_audit
