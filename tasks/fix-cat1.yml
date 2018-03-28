@@ -47,11 +47,10 @@
       - RHEL-07-010290
 
 - name: "HIGH | RHEL-07-010300 | PATCH | The SSH daemon must not allow authentication using an empty password."
-  lineinfile:
-      state: present
-      dest: /etc/ssh/sshd_config
-      regexp: "(?i)^#?PermitEmptyPasswords"
-      line: PermitEmptyPasswords no
+  replace:
+      path: /etc/ssh/sshd_config
+      regexp: "(?i)^PermitEmptyPasswords([ \t]+(?!no$).*$)"
+      replace: '#PermitEmptyPasswords\1'
       validate: /usr/sbin/sshd -tf %s
   notify: restart sshd
   when: rhel_07_010300
