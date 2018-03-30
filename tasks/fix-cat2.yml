@@ -1306,7 +1306,7 @@
         description: "successful/unsuccessful account access count events"
         key: "logins"
       - id: "030610"
-        path: "/var/run/faillock"
+        path: "/var/run/faillock/"
         description: "unsuccessful account access events"
         key: "logins"
       - id: "030620"
