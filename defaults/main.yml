@@ -509,3 +509,6 @@ rhel7stig_boot_part: "{{ rhel_07_boot_part.stdout }}"
 
 rhel7stig_machine_uses_uefi: "{{ rhel_07_sys_firmware_efi.stat.exists }}"
 rhel7stig_grub_cfg_path: "{{ rhel7stig_machine_uses_uefi | ternary('/boot/efi/EFI/{{ ansible_distribution | lower }}/grub.cfg', '/boot/grub2/grub.cfg') }}"
+
+rhel7stig_local_mounts: "{{ ansible_mounts | to_json | from_json | json_query(rhel7stig_local_mounts_query) }}"
+rhel7stig_local_mounts_query: "[?starts_with(device, '/dev/')].mount"
